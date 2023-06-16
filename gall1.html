@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Website - Gallery</title>
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+
+         html, body 
+      
+        {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+        body {
+         background: linear-gradient(to top, #333333, #dddddd);
+         margin: 0; /* Reset default margin */
+         padding: 0; /* Reset default padding */
+        }
+
+       
+        .gallery-container {
+            align-items: center;
+            height: 800px; /* Set the desired height for the gallery container */
+            overflow-y: scroll;
+        }
+
+        .gallery {
+          
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px; /* Adjust the desired gap between photos */
+        max-width: 800px; /* Adjust the desired maximum width of the gallery */
+        margin: 0 auto; /* Center the gallery horizontally */
+        }
+
+        .photo {
+            position: relative;
+            width: 200px; /* Set the desired width */
+            height: 200px; /* Set the desired height */
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .tooltip {
+            position:relative;
+            bottom: 0;
+            right:  0;
+            width: 100%;
+            color: black;
+            padding: 10px;
+            font-family: Arial, sans-serif; /* Specify your desired font family here */
+            font-size: 20px; /* Adjust the desired font size */
+            text-align: end;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .photo:hover .tooltip {
+            opacity: 1;
+            
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Add background color with transparency */
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            filter: blur(0); /* Initially, no blur effect */
+            transition: filter 0.3s;
+        }
+
+        .close {
+            position: absolute;
+            flex-wrap: wrap;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.5); /* Add background color with transparency */
+            padding: 5px; /* Add padding for better visibility */
+            border-radius: 50%; /* Make the button circular */
+        }
+
+        .close-text {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal:hover .close-text {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My gallery</h1>
+    <div class="navbar">
+        <a href="index.html">HOME</a>
+        <a target="blank" href="about.html">ABOUT</a>
+        <a target="blank" href="contact.html">CONTACT</a>
+    </div>
+
+
+
+    <div class="gallery-container">
+        <div class="gallery">
+            <div class="photo">
+                <img src="./images/albein_graph.jpg" alt="Albert Einstein in graphite pencil"
+                    data-fullsize="./images/albein_graph.jpg" title="Albert Einstein in graphite pencil">
+                <span class="tooltip"> Albert Einstein in graphite pencil</span>
+              </div>
+              <div class="photo">
+                <img src="./images/donna_graph.jpg" alt="Golden retriever in graphite pencil"
+                    data-fullsize="./images/donna_graph.jpg">
+                <span class="tooltip"> Golden retriever in graphite pencil</span>
+              </div>
+                 <div class="photo">
+                  <img src="./images/eagle_graph.jpg" alt="Eagle in grahite pencil"
+                      data-fullsize="./images/eagle_graph.jpg">
+                  <span class="tooltip"> Eagle in graphite pencil</span>
+              </div>
+              <div class="photo">
+                  <img src="./images/fox_col.jpg" alt="Fox in grahite pencil" data-fullsize="./images/fox_col.jpg">
+                  <span class="tooltip"> Fox in graphite pencil</span>
+              </div>
+              <div class="photo">
+                  <img src="./images/horse_graph.jpg" alt="Horse in grahite pencil"
+                      data-fullsize="./images/horse_graph.jpg">
+                  <span class="tooltip"> Horse in graphite pencil</span>
+              </div>
+              <div class="photo">
+                  <img src="./images/hugh_graph.jpg" alt="Wloverine in grahite pencil"
+                      data-fullsize="./images/hugh_graph.jpg">
+                  <span class="tooltip"> Wloverine in graphite pencil</span>
+              </div>
+              <div class="photo">
+                  <img src="./images/meg_graph.jpg" alt="Shitzu in grahite pencil"
+                      data-fullsize="./images/meg_graph.jpg">
+                  <span class="tooltip"> Shitzu in graphite pencil</span>
+              </div>
+              <div class="photo">
+                  <img src="./images/wolf_graph.jpg" alt="Wolf in grahite pencil"
+                      data-fullsize="./images/wolf_graph.jpg">
+                  <span class="tooltip"> Wolf in graphite pencil</span>
+              </div>
+        </div>
+      
+    </div>
+
+    <div class="modal">
+        <span class="close">&times;</span>
+        <span class="close-text">Click to close -></span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <script>
+        // Get references to necessary elements
+        const photos = document.querySelectorAll('.photo');
+        const modal = document.querySelector('.modal');
+        const modalImage = document.getElementById('modal-image');
+        const closeBtn = document.querySelector('.close');
+        const closeText = document.querySelector('.close-text');
+
+        // Add click event listener to each photo
+        photos.forEach(photo => {
+            photo.addEventListener('click', function () {
+                const fullsizeSrc = this.querySelector('img').getAttribute('data-fullsize');
+                modalImage.src = fullsizeSrc;
+                modal.style.display = 'flex';
+                
+            });
+        });
+
+        // Close the modal when the close button or close text is clicked
+        closeBtn.addEventListener('click', function () {
+            closeModal();
+        });
+
+        closeText.addEventListener('click', function () {
+            closeModal();
+        });
+
+        // Function to close the modal and reset the blur effect
+        function closeModal() {
+            modal.style.display = 'none';
+            modalImage.style.filter = 'blur(0)';
+        }
+    </script>
+</body>
+
+</html>
