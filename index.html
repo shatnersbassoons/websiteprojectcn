@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Just Me</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
 
     <style>
@@ -16,23 +17,42 @@
 
         body {
             background: linear-gradient(to top, #333333, #dddddd);
-            margin: 0; /* Reset default margin */
-            padding: 0; /* Reset default padding */
+            margin: 0;
+            padding: 0;
+            position: relative; /* Add relative positioning to the body */
         }
 
         .content {
-            display: flex; /* Display the image and text in a row */
-            align-items: center; /* Center vertically */
+            display: flex;
+            align-items: center;
         }
 
         .content img {
-            flex: 0 0 50%; /* Adjust the width of the image (50% of the container) */
-            margin-right: 50px; /* Add some spacing between the image and text */
+            flex: 0 0 50%;
+            margin-right: 50px;
         }
 
         .content p {
             text-align: right;
-            font-size: 50px; /* Increase the font size */
+            font-size: 50px;
+        }
+
+        .socialmediaicons {
+            list-style: none;
+            display: flex;
+            position: absolute; /* Position the icons absolutely */
+            top: 10px; /* Adjust the top position */
+            left: 10px; /* Adjust the left position */
+        }
+
+        .socialmediaicons li {
+            margin-right: 10px;
+        }
+
+        .socialmediaicons a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 24px;
         }
     </style>
 </head>
@@ -51,7 +71,14 @@
         <p>Welcome to my website</p>
     </div>
 
+    <div class="leftside">
+        <ul class="socialmediaicons">
+            <li><a target="_blank" href="https://www.facebook.com/dave.graham.104" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/davegraham3" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
-
