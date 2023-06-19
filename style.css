@@ -61,6 +61,11 @@ video {
   .navbar a {
     justify-content: space-evenly;
     text-decoration:none
+    font-size: 18px; /* Adjust the font size as desired */
+    color: white; /* Change to the desired color */
+   .navbar a:hover {
+    color: yellow; /* Change to the desired hover color */
+    text-decoration: underline; /* Add an underline effect or any other style */
     
   }
 
