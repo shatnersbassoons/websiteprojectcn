@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-   
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,38 +8,48 @@
     <link rel="stylesheet" href="./style.css">
 
     <style>
-      html, body 
-      
-      {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
+        body {
+            background: linear-gradient(to top, #333333, #dddddd);
+            margin: 0; /* Reset default margin */
+            padding: 0; /* Reset default padding */
+        }
 
-      body {
-       background: linear-gradient(to top, #333333, #dddddd);
-       margin: 0; /* Reset default margin */
-       padding: 0; /* Reset default padding */
-      }
+        .content {
+            display: flex; /* Display the image and text in a row */
+            align-items: center; /* Center vertically */
+        }
+
+        .content img {
+            flex: 0 0 50%; /* Adjust the width of the image (50% of the container) */
+            margin-right: 20px; /* Add some spacing between the image and text */
+        }
+
+        .content p {
+            text-align: right;
+        }
     </style>
 </head>
 
-<body> 
-  <h1>Just Me</h1>
-<div class="navbar">
-    <a href="index.html">HOME</a>
-    <a target="blank" href="about.html">ABOUT</a>
-    <a target="blank" href="gall1.html">GALLERY</a>
-    <a target="blank" href="contact.html">CONTACT</a>
-  </div>
+<body>
+    <h1>Just Me</h1>
+    <div class="navbar">
+        <a href="index.html">HOME</a>
+        <a target="_blank" href="about.html">ABOUT</a>
+        <a target="_blank" href="gall1.html">GALLERY</a>
+        <a target="_blank" href="contact.html">CONTACT</a>
+    </div>
 
+    <div class="content">
+        <img src="images/wolf_graph.jpg" alt="Wolf in graphite">
+        <p>Welcome to my website</p>
+    </div>
 
-  <img src="images/wolf_graph.jpg" alt="Wolf in graphite">
-  <p style="text-align:right;">Welcome to my website</p>
+</body>
 
-
-   
-
- </body>
 </html>
