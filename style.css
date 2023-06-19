@@ -47,27 +47,22 @@ video {
  
  
 
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 50px;
-    padding: 20px;
-    background-color: transparent;
-    
-    
-  }
-  
-  .navbar a {
-    justify-content: space-evenly;
-    text-decoration:none
-    font-size: 18px; /* Adjust the font size as desired */
-    color: white; /* Change to the desired color */
-   .navbar a:hover {
-    color: yellow; /* Change to the desired hover color */
-    text-decoration: underline; /* Add an underline effect or any other style */
-    
-  }
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #333333;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.navbar a:hover {
+  background-color: #555555;
+}
 
 
 
